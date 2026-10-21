@@ -57,7 +57,7 @@ fi
 APP_PATH="${APPS[0]}"
 APP_NAME="$(basename "$APP_PATH")"
 EXECUTABLE="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP_PATH/Info.plist")"
-xcrun lipo -verify_arch arm64 "$APP_PATH/$EXECUTABLE"
+xcrun lipo "$APP_PATH/$EXECUTABLE" -verify_arch arm64
 test -f "$APP_PATH/Frameworks/UnityFramework.framework/UnityFramework"
 
 # Use a fresh staging directory so a repeated build cannot mix app versions.
