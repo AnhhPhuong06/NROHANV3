@@ -3,61 +3,212 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101b18">
-  <meta name="description" content="Tải và cài đặt NroHan cho iPhone và iPad.">
-  <title>Cài đặt NroHan</title>
+  <meta name="theme-color" content="#121512">
+  <meta name="description" content="NroHan cho iPhone và iPad. Tải phiên bản 0.0.3 và xem hướng dẫn cài đặt trực tiếp bằng Safari.">
+  <meta property="og:title" content="NroHan — Sẵn sàng nhập cuộc">
+  <meta property="og:description" content="Tải NroHan cho iPhone và iPad. Phiên bản 0.0.3 · 37,3 MB.">
+  <meta property="og:image" content="https://anhhphuong06.github.io/NROHANV3/assets/app-icon.png">
+  <meta property="og:url" content="https://anhhphuong06.github.io/NROHANV3/">
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
+  <title>NroHan — Cài đặt cho iOS</title>
   <style>
-    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #101b18; color: #edf5ef; }
+    :root { color-scheme: dark; --bg: #121512; --text: #f5f3e9; --muted: #acb2a6; --accent: #ffad43; --line: #ffffff1c; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100svh; display: grid; place-items: center; padding: 36px 20px; background: radial-gradient(ellipse at 15% 0%, #244b3a 0, transparent 65%); }
-    main { width: 100%; max-width: 460px; }
-    .eyebrow { color: #a8c0b2; font-size: 12px; letter-spacing: .16em; font-weight: 700; }
-    .badge { width: 80px; height: 80px; display: grid; place-items: center; margin: 28px 0 20px; border-radius: 24px; background: #b9f36b; color: #172713; font-size: 24px; font-weight: 900; box-shadow: 0 12px 40px #0003; }
-    h1 { margin: 0; font-size: clamp(38px, 10vw, 52px); letter-spacing: -.05em; }
-    .subtitle { color: #b3c6bb; margin: 12px 0 28px; line-height: 1.6; }
-    .details { display: flex; gap: 24px; border-top: 1px solid #ffffff20; border-bottom: 1px solid #ffffff20; padding: 18px 0; margin-bottom: 28px; }
-    .details span { display: block; color: #95ac9e; font-size: 12px; margin-bottom: 5px; }
-    .details strong { font-size: 15px; font-weight: 600; }
-    .button { display: block; padding: 18px; background: #b9f36b; color: #172713; text-decoration: none; text-align: center; border-radius: 14px; font-size: 17px; font-weight: 750; transition: background .15s; }
-    .button:hover { background: #cbff8a; }
-    a:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
-    .download { display: block; text-align: center; padding: 17px; color: #bdd5c6; font-size: 14px; }
-    .note { margin: 6px 0 28px; color: #a8c0b2; text-align: center; font-size: 13px; line-height: 1.6; }
-    details { border-top: 1px solid #ffffff20; padding: 18px 0; }
-    summary { cursor: pointer; font-weight: 600; font-size: 15px; }
-    ol { padding-left: 22px; color: #b3c6bb; font-size: 14px; line-height: 1.8; }
-    li + li { margin-top: 10px; }
-    .signing { color: #9eb4a7; font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; }
-    footer { margin-top: 22px; color: #829b8c; font-size: 12px; line-height: 1.7; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+    body { margin: 0; background: radial-gradient(ellipse at 88% 18%, #29352866 0, transparent 45%), var(--bg); }
+    a { color: inherit; text-decoration: none; }
+    svg { display: block; flex-shrink: 0; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
+    .wrap { width: calc(100% - 96px); max-width: 1120px; margin: 0 auto; }
+    .nav { min-height: 104px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 12px; }
+    .brand img { width: 42px; height: 42px; border-radius: 13px; }
+    .wordmark { font-size: 24px; font-weight: 850; letter-spacing: -.06em; }
+    .wordmark span { color: var(--accent); }
+    .nav-link { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: #d2d5ca; padding: 12px 0 12px 12px; }
+    .nav-link svg { width: 16px; height: 16px; }
+    .hero { display: grid; grid-template-columns: 1.12fr 1fr; gap: 32px; align-items: center; padding: 76px 0 80px; }
+    .hero-copy { position: relative; z-index: 1; min-width: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 24px; color: var(--accent); font-size: 11px; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; height: 2px; width: 24px; background: var(--accent); }
+    h1 { margin: 0; font-size: 76px; font-size: clamp(52px, 6.6vw, 82px); font-weight: 850; line-height: 1.03; letter-spacing: -.065em; }
+    h1 span { color: var(--accent); }
+    .intro { max-width: 380px; color: var(--muted); font-size: 16px; line-height: 1.8; margin: 24px 0 28px; }
+    .specs { display: flex; margin: 0 0 32px; padding: 0; }
+    .specs div { padding: 0 22px; border-left: 1px solid var(--line); }
+    .specs div:first-child { padding-left: 0; border: 0; }
+    .specs dt { color: #a4ac9e; font-size: 11px; margin-bottom: 7px; }
+    .specs dd { margin: 0; font-size: 15px; font-weight: 650; white-space: nowrap; }
+    .install { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 70px; width: 310px; max-width: 100%; padding: 16px 22px; border-radius: 14px; background: var(--accent); color: #231b11; box-shadow: 0 6px 0 #9a591a, 0 16px 32px #ff950011; transition: transform .18s, background .18s, box-shadow .18s; }
+    .install:hover { background: #ffbd69; transform: translateY(-2px); box-shadow: 0 8px 0 #9a591a, 0 18px 32px #ff950020; }
+    .install:active { transform: translateY(4px); box-shadow: 0 2px 0 #9a591a; }
+    .install strong, .install small { display: block; }
+    .install strong { font-size: 17px; font-weight: 800; }
+    .install small { margin-top: 4px; font-size: 11px; color: #63411e; }
+    .install svg { width: 24px; height: 24px; }
+    .secondary { display: flex; align-items: center; gap: 18px; margin-top: 24px; color: #b6bdaf; font-size: 12px; }
+    .download { display: inline-flex; align-items: center; gap: 6px; padding: 8px 0; color: #dedfd4; }
+    .download:hover { color: var(--accent); }
+    .download svg { width: 13px; height: 13px; }
+    .secondary .divider { width: 3px; height: 3px; background: #687260; border-radius: 50%; }
+    .visual { position: relative; min-width: 0; height: 490px; display: flex; justify-content: center; align-items: center; isolation: isolate; }
+    .orbit { position: absolute; width: 430px; height: 430px; max-width: 100%; border: 1px solid #a4bd7c28; border-radius: 50%; z-index: -1; }
+    .orbit::before { position: absolute; content: ""; inset: 27px; border: 1px dashed #a4bd7c20; border-radius: 50%; }
+    .orbit::after { content: ""; position: absolute; left: 20px; top: 105px; width: 8px; height: 8px; background: #9bb46a; border-radius: 50%; box-shadow: 370px 155px 0 -2px #ffb95a; }
+    .poster { width: 330px; max-width: 78%; margin: 0; padding: 9px 9px 0; transform: rotate(5deg); border: 1px solid #eef3cc33; border-radius: 26px; background: #e9ebd8; box-shadow: 18px 28px 70px #0007, -9px -9px 0 #a6b7790b; }
+    .poster img { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 18px; }
+    .poster figcaption { display: flex; justify-content: space-between; align-items: center; padding: 15px 8px; color: #273323; font-size: 10px; font-weight: 750; letter-spacing: .12em; }
+    .poster figcaption strong { font-size: 14px; letter-spacing: -.03em; }
+    .edition { position: absolute; top: 27px; right: 8px; display: flex; gap: 8px; align-items: center; color: #b9c3ac; font-size: 10px; letter-spacing: .16em; }
+    .edition::before { content: "+"; font-size: 22px; color: var(--accent); font-weight: 300; }
+    .version-sticker { position: absolute; bottom: 37px; left: 7px; padding: 13px 18px; border: 1px solid #ffffff2b; border-radius: 12px; background: #242c21; box-shadow: 0 10px 25px #0003; transform: rotate(-6deg); }
+    .version-sticker span { display: block; font-size: 9px; letter-spacing: .15em; color: #b3bd9f; margin-bottom: 5px; }
+    .version-sticker strong { font-size: 20px; letter-spacing: -.04em; color: #edf1cf; }
+    .spark { position: absolute; top: 85px; left: 25px; color: var(--accent); font-size: 36px; font-weight: 200; transform: rotate(14deg); }
+    .side-label { position: absolute; right: 0; bottom: 78px; writing-mode: vertical-rl; color: #8e9d7e; font-size: 9px; letter-spacing: .25em; }
+    .guide { padding: 48px 0 50px; border-top: 1px solid var(--line); }
+    .section-title { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+    .section-title h2 { margin: 0; font-size: 28px; letter-spacing: -.045em; }
+    .section-title p { margin: 0; font-size: 12px; color: #99a28f; }
+    .steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; padding: 0; margin: 32px 0 0; }
+    .step-number { display: inline-flex; align-items: center; gap: 12px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+    .step-number::after { content: ""; width: 34px; height: 1px; background: #ffad434a; }
+    .steps h3 { margin: 14px 0 9px; font-size: 15px; font-weight: 650; }
+    .steps p { margin: 0; color: #a7afa0; font-size: 13px; line-height: 1.85; }
+    .help { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-bottom: 36px; }
+    details { border-top: 1px solid var(--line); }
+    summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 64px; padding: 15px 0; cursor: pointer; list-style: none; font-size: 13px; color: #d1d6c7; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 22px; font-weight: 300; color: #8d9a82; }
+    details[open] summary::after { content: "−"; }
+    .answer { margin: 0; padding-bottom: 22px; color: #a7afa0; font-size: 12px; line-height: 1.9; overflow-wrap: anywhere; }
+    .answer strong { color: #d1d6c7; font-weight: 600; }
+    footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 25px 0 32px; border-top: 1px solid var(--line); color: #9ba58e; font-size: 10px; line-height: 1.8; }
+    .footer-brand { font-weight: 750; letter-spacing: .13em; color: #bac4ac; }
+    footer p { margin: 0; text-align: right; }
+    @media (max-width: 900px) {
+      .wrap { width: calc(100% - 56px); }
+      .hero { gap: 12px; padding: 60px 0; }
+      h1 { font-size: 60px; }
+      .visual { height: 400px; }
+      .poster { max-width: 85%; }
+      .edition { top: 0; }
+      .version-sticker { bottom: 10px; left: 0; }
+      .orbit::after { box-shadow: none; }
+      .spark { left: 0; top: 38px; }
+      .side-label { right: -12px; bottom: 43px; }
+      .steps { gap: 24px; }
+      .specs div { padding: 0 15px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: calc(100% - 44px); }
+      .nav { min-height: 82px; }
+      .brand { gap: 9px; }
+      .brand img { width: 35px; height: 35px; border-radius: 11px; }
+      .wordmark { font-size: 21px; }
+      .nav-link { font-size: 12px; gap: 7px; }
+      .hero { grid-template-columns: 1fr; padding: 42px 0 38px; gap: 16px; }
+      .eyebrow { margin-bottom: 20px; font-size: 10px; }
+      h1 { font-size: 66px; font-size: clamp(50px, 14.5vw, 76px); }
+      .intro { font-size: 14px; margin: 20px 0 24px; max-width: 340px; }
+      .specs { margin-bottom: 28px; }
+      .specs div { padding: 0 24px; }
+      .specs dt { font-size: 10px; }
+      .specs dd { font-size: 14px; }
+      .install { width: 100%; }
+      .secondary { justify-content: center; gap: 16px; margin-top: 20px; }
+      .visual { height: 400px; width: 100%; max-width: 420px; margin: 6px auto 0; }
+      .poster { width: 275px; max-width: 78%; border-radius: 24px; }
+      .poster figcaption { padding: 14px 7px; font-size: 9px; }
+      .orbit { width: 350px; height: 350px; }
+      .spark { top: 45px; left: 5px; }
+      .edition { top: 12px; right: 7px; }
+      .side-label { right: 1px; bottom: 45px; }
+      .version-sticker { left: 4px; bottom: 14px; padding: 11px 15px; }
+      .version-sticker strong { font-size: 18px; }
+      .guide { padding: 32px 0; }
+      .section-title { display: block; }
+      .section-title h2 { font-size: 26px; }
+      .section-title p { margin-top: 9px; font-size: 11px; }
+      .steps { grid-template-columns: 1fr; gap: 25px; margin-top: 30px; }
+      .steps li { display: grid; grid-template-columns: 38px 1fr; gap: 8px; }
+      .step-number { align-self: start; margin-top: 3px; }
+      .step-number::after { display: none; }
+      .steps h3 { margin: 0 0 7px; }
+      .steps p { font-size: 12px; max-width: 350px; }
+      .help { grid-template-columns: 1fr; gap: 0; padding-bottom: 8px; }
+      summary { min-height: 62px; }
+      footer { padding: 23px 0 30px; align-items: flex-start; }
+      footer p { max-width: 200px; font-size: 9px; }
+    }
+    @media (max-width: 350px) { .wrap { width: calc(100% - 36px); } .specs div { padding: 0 17px; } .secondary { font-size: 11px; gap: 10px; } .visual { height: 350px; } .orbit { height: 290px; width: 290px; } .edition { top: 0; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .install { transition: none; } }
   </style>
 </head>
 <body>
-  <main>
-    <div class="eyebrow">NROHAN / iOS</div>
-    <div class="badge" aria-hidden="true">NRO</div>
-    <h1>NroHan</h1>
-    <p class="subtitle">Bản dành cho iPhone và iPad.<br>Mở trang này bằng Safari để cài đặt.</p>
-    <div class="details" aria-label="Thông tin phiên bản">
-      <div><span>Phiên bản</span><strong>0.0.3</strong></div>
-      <div><span>Dung lượng</span><strong>37,3 MB</strong></div>
-      <div><span>Thiết bị</span><strong>iOS 12+</strong></div>
-    </div>
-    <a class="button" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fanhhphuong06.github.io%2FNROHANV3%2Fmanifest.plist">Cài đặt trên iPhone / iPad</a>
-    <a class="download" href="https://github.com/AnhhPhuong06/NROHANV3/releases/download/v0.0.3-enterprise.1/NroHan-enterprise.ipa">Tải file IPA</a>
-    <p class="note">Không cần đăng nhập GitHub.<br>Sau khi xác nhận cài, về màn hình chính để xem tiến trình.</p>
-    <details>
-      <summary>Hướng dẫn khi cài lần đầu</summary>
-      <ol>
-        <li>Mở trang bằng <strong>Safari</strong>, nhấn <strong>Cài đặt</strong> rồi xác nhận.</li>
-        <li>Nếu iPhone báo nhà phát triển chưa được tin cậy, vào <strong>Cài đặt → Cài đặt chung → VPN &amp; Quản lý thiết bị</strong>.</li>
-        <li>Chọn nhà phát triển <strong>RAKUTEN SECURITIES,INC.</strong> và làm theo hướng dẫn tin cậy trên thiết bị. iOS 18 trở lên có thể yêu cầu khởi động lại.</li>
+  <header class="wrap nav">
+    <a class="brand" href="#" aria-label="NroHan, đầu trang">
+      <img src="assets/app-icon.png" alt="" width="42" height="42">
+      <span class="wordmark">Nro<span>Han.</span></span>
+    </a>
+    <nav aria-label="Điều hướng"><a class="nav-link" href="#huong-dan">Hướng dẫn cài
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a></nav>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">NroHan · Phiên bản iOS</p>
+        <h1 id="hero-title">Sẵn sàng<br><span>nhập cuộc.</span></h1>
+        <p class="intro">Hành trình NroHan, ngay trên iPhone và iPad của bạn. Mở bằng Safari và bắt đầu cài đặt.</p>
+        <dl class="specs">
+          <div><dt>Phiên bản</dt><dd>0.0.3</dd></div>
+          <div><dt>Dung lượng</dt><dd>37,3 MB</dd></div>
+          <div><dt>Tương thích</dt><dd>iOS 12+</dd></div>
+        </dl>
+        <a class="install" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fanhhphuong06.github.io%2FNROHANV3%2Fmanifest.plist">
+          <span><strong>Cài đặt NroHan</strong><small>Dành cho iPhone &amp; iPad</small></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg>
+        </a>
+        <div class="secondary">
+          <a class="download" href="https://github.com/AnhhPhuong06/NROHANV3/releases/download/v0.0.3-enterprise.1/NroHan-enterprise.ipa">Tải file IPA
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <span class="divider" aria-hidden="true"></span><span>Không cần đăng nhập</span>
+        </div>
+      </div>
+      <div class="visual">
+        <div class="orbit" aria-hidden="true"></div>
+        <span class="edition" aria-hidden="true">iOS EDITION</span>
+        <span class="spark" aria-hidden="true">✦</span>
+        <figure class="poster">
+          <img src="assets/app-icon.png" alt="Nhân vật tóc cam đeo kính đen trong biểu tượng game NroHan" width="1024" height="1024" fetchpriority="high">
+          <figcaption><strong>NroHan.</strong><span>THE ADVENTURE AWAITS</span></figcaption>
+        </figure>
+        <div class="version-sticker" aria-hidden="true"><span>READY TO PLAY</span><strong>Phiên bản 0.0.3</strong></div>
+        <span class="side-label" aria-hidden="true">IPHONE &amp; IPAD / NROHAN</span>
+      </div>
+    </section>
+    <section id="huong-dan" class="guide" aria-labelledby="guide-title">
+      <div class="section-title"><h2 id="guide-title">Vào game trong 3 bước.</h2><p>Lần đầu cài đặt? Bắt đầu từ đây.</p></div>
+      <ol class="steps">
+        <li><span class="step-number" aria-hidden="true">01</span><div><h3>Mở bằng Safari</h3><p>Mở link trang này trên Safari của iPhone hoặc iPad để dùng nút cài đặt.</p></div></li>
+        <li><span class="step-number" aria-hidden="true">02</span><div><h3>Chạm để cài đặt</h3><p>Nhấn “Cài đặt NroHan”, xác nhận rồi về màn hình chính để theo dõi tiến trình.</p></div></li>
+        <li><span class="step-number" aria-hidden="true">03</span><div><h3>Tin cậy nhà phát triển</h3><p>Nếu được yêu cầu, vào Cài đặt → Cài đặt chung → VPN &amp; Quản lý thiết bị để xác nhận tin cậy.</p></div></li>
       </ol>
-    </details>
-    <details>
-      <summary>Thông tin bản ký</summary>
-      <p class="signing">Nhà phát triển trên chứng chỉ: RAKUTEN SECURITIES,INC.<br>Profile Enterprise hết hạn: 05/11/2026.<br>Việc cài đặt còn phụ thuộc trạng thái chứng chỉ và xác thực của Apple.</p>
-    </details>
-    <footer>Bản Enterprise dành cho phân phối nội bộ của tổ chức.</footer>
+    </section>
+    <section class="help" aria-label="Trợ giúp cài đặt">
+      <details>
+        <summary>iPhone báo nhà phát triển chưa tin cậy?</summary>
+        <p class="answer">Trong <strong>Cài đặt → Cài đặt chung → VPN &amp; Quản lý thiết bị</strong>, chọn nhà phát triển <strong>RAKUTEN SECURITIES,INC.</strong> và làm theo hướng dẫn trên thiết bị. iOS 18 trở lên có thể yêu cầu khởi động lại. Sau đó mở lại NroHan.</p>
+      </details>
+      <details>
+        <summary>Thông tin chứng chỉ &amp; hạn sử dụng</summary>
+        <p class="answer">Nhà phát triển trên chứng chỉ: <strong>RAKUTEN SECURITIES,INC.</strong><br>Profile Enterprise hết hạn: <strong>05/11/2026</strong>.<br>Việc cài đặt còn phụ thuộc trạng thái chứng chỉ và xác thực của Apple.</p>
+      </details>
+    </section>
   </main>
+  <footer class="wrap"><span class="footer-brand">NROHAN / iOS</span><p>Phiên bản 0.0.3<br>Bản Enterprise dành cho phân phối nội bộ của tổ chức.</p></footer>
 </body>
 </html>
