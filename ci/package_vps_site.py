@@ -83,9 +83,6 @@ def build_package(base_url, ipa, output):
         "index.html", "manifest.plist", "assets/app-icon.png", "NroHan-enterprise.ipa", ".htaccess",
     )]
     package = output / "NroHan-VPS.zip"
-    with zipfile.ZipFile(package, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=1) as archive:
-        for file in files:
-            archive.write(file, file.relative_to(public).as_posix())
     instructions = f"""ĐƯA TRANG CÀI NROHAN LÊN VPS
 
 1. Upload NroHan-VPS.zip vào thư mục gốc của website đang phục vụ tên miền.
@@ -128,6 +125,15 @@ Chưa kiểm tra trực tiếp trên VPS của bạn hoặc cài trên iPhone th
         "    try_files $uri $uri/ =404;\n"
         "}\n", encoding="ascii",
     )
+    deploy_notes = site / "_deploy"
+    deploy_notes.mkdir(exist_ok=True)
+    for name in ("HUONG-DAN.txt", "nginx-ios.conf"):
+        target = deploy_notes / name
+        shutil.copy2(output / name, target)
+        files.append(target)
+    with zipfile.ZipFile(package, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=1) as archive:
+        for file in files:
+            archive.write(file, file.relative_to(public).as_posix())
     digest = hashlib.sha256(package.read_bytes()).hexdigest()
     (output / "SHA256SUMS.txt").write_text(f"{digest}  {package.name}\n", encoding="ascii")
     print(f"Package: {package}")
