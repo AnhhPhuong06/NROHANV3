@@ -1,0 +1,20 @@
+workflows:
+  ios-unsigned:
+    name: NroHan - Unsigned IPA
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    environment:
+      xcode: 16.4
+    scripts:
+      - name: Download Unity libraries from Git LFS
+        script: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull
+          git lfs fsck
+      - name: Build and package unsigned IPA
+        script: bash ci/build_unsigned_ipa.sh
+    artifacts:
+      - build/*.ipa
+      - build/logs/*.log
+      - build/*.xcresult
