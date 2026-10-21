@@ -4,9 +4,28 @@ Project Xcode export từ Unity 2021.3.45f2, dành cho iPhone/iPad arm64.
 
 ## Cài đặt trên iPhone / iPad
 
-Mở [trang cài NroHan](https://anhhphuong06.github.io/NROHANV3/) bằng Safari.
+Mở [trang cài NroHan](https://nroha.fun/) bằng Safari.
 Trang và manifest OTA ở `docs/`; IPA đã ký được lưu ở GitHub Releases.
 Profile của bản Enterprise 0.0.3 hiện tại hết hạn ngày **05/11/2026**.
+
+### Tên miền nroha.fun
+
+GitHub Pages xuất bản từ nhánh `main`, thư mục `/docs`; tên miền được khai báo
+trong `docs/CNAME`. Nút cài dùng `https://nroha.fun/manifest.plist`, còn IPA
+tiếp tục được tải từ GitHub Releases.
+
+Trong Cloudflare → **nroha.fun → DNS → Records**, cấu hình tên gốc:
+
+- **Type:** `CNAME`
+- **Name:** `@`
+- **Target:** `anhhphuong06.github.io` (không thêm `/NROHANV3`)
+- **Proxy status:** `DNS only` (mây xám)
+- **TTL:** `Auto`
+
+Thay các bản ghi `A`/`AAAA` cũ có cùng tên gốc `@` bằng bản ghi trên; nếu đã có
+`CNAME` ở `@`, sửa bản ghi đó. Các bản ghi email và tên miền phụ được giữ nguyên.
+Cloudflare hỗ trợ CNAME ở tên gốc bằng CNAME flattening. Sau khi DNS trỏ đúng,
+GitHub có thể cấp HTTPS; kiểm tra **Settings → Pages → Enforce HTTPS**.
 
 ## Build IPA unsigned trên Codemagic
 
