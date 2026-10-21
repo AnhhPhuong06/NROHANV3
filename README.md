@@ -31,5 +31,30 @@ bash ci/build_unsigned_ipa.sh
 
 Kết quả: `build/NroHan-unsigned.ipa`.
 
+## Build IPA ký Enterprise trên Codemagic
+
+Trong **Team settings → codemagic.yaml settings → Code signing identities**:
+
+1. Tab **iOS certificates**: tải file `.p12` chứa certificate và private key,
+   nhập mật khẩu trực tiếp vào Codemagic, đặt Reference name là
+   **nrohan_enterprise_cert**.
+2. Tab **iOS provisioning profiles**: tải `.mobileprovision`, đặt Reference name
+   là **nrohan_enterprise_profile**. Profile phải là loại **Enterprise / In House**,
+   còn hạn và có dấu kiểm khớp với certificate.
+3. Chạy workflow **ios-enterprise** trên nhánh **main**.
+4. Tải **NroHan-enterprise.ipa** trong **Artifacts** sau khi build thành công.
+
+Workflow dùng Bundle ID cụ thể trong profile. Với profile wildcard `*`, giữ
+`com.DefaultCompany.Boy003`; với wildcard có prefix khác, ví dụ `com.company.*`,
+dùng `com.company.NroHan`. Có thể đặt biến **BUNDLE_ID** trong app settings trên
+Codemagic để chọn ID khác phù hợp với profile. Thay đổi Bundle ID chỉ áp dụng
+trong checkout của lượt build Enterprise.
+
+Chứng chỉ, private key, mật khẩu và profile được quản lý trong Codemagic,
+không đưa vào GitHub. Bản ký Enterprise dành cho phân phối nội bộ của tổ chức.
+Workflow tạo IPA đã ký; việc lưu trữ file và tạo link cài OTA được thiết lập riêng.
+
+Tham khảo: [Code signing trên Codemagic](https://docs.codemagic.io/yaml-code-signing/signing-ios/).
+
 Tham khảo: [Codemagic YAML](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/)
 và [build iOS unsigned](https://docs.codemagic.io/yaml-quick-start/first-signed-build/).

@@ -18,3 +18,53 @@ workflows:
       - build/*.ipa
       - build/logs/*.log
       - build/*.xcresult
+  ios-enterprise:
+    name: NroHan - Enterprise Signed IPA
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    environment:
+      xcode: 16.4
+      ios_signing:
+        certificates:
+          - nrohan_enterprise_cert
+        provisioning_profiles:
+          - profile: nrohan_enterprise_profile
+            environment_variable: ENTERPRISE_PROFILE_PATH
+    scripts:
+      - name: Download Unity libraries from Git LFS
+        script: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull
+          git lfs fsck
+      - name: Configure Enterprise code signing
+        script: |
+          set -euo pipefail
+          python3 ci/prepare_enterprise_signing.py
+          mkdir -p build/enterprise
+          xcode-project use-profiles \
+            --project Unity-iPhone.xcodeproj \
+            --profile "$ENTERPRISE_PROFILE_PATH" \
+            --archive-method enterprise \
+            --export-options-plist build/enterprise/export_options.plist
+      - name: Build Enterprise signed IPA
+        script: |
+          set -euo pipefail
+          xcode-project build-ipa \
+            --project Unity-iPhone.xcodeproj \
+            --scheme Unity-iPhone \
+            --config Release \
+            --archive-xcargs "ARCHS=arm64 ONLY_ACTIVE_ARCH=NO ENABLE_BITCODE=NO COMPILER_INDEX_STORE_ENABLE=NO" \
+            --export-options-plist build/enterprise/export_options.plist \
+            --ipa-directory build/enterprise/ipa
+          shopt -s nullglob
+          ipas=(build/enterprise/ipa/*.ipa)
+          if [[ ${#ipas[@]} -ne 1 ]]; then
+            echo "Expected exactly one exported Enterprise IPA." >&2
+            exit 1
+          fi
+          mv "${ipas[0]}" build/enterprise/NroHan-enterprise.ipa
+          unzip -tq build/enterprise/NroHan-enterprise.ipa
+    artifacts:
+      - build/enterprise/*.ipa
+      - /tmp/xcodebuild_logs/*.log
