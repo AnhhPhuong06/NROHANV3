@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b18">
+  <meta name="description" content="Tải và cài đặt NroHan cho iPhone và iPad.">
+  <title>Cài đặt NroHan</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #101b18; color: #edf5ef; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; padding: 36px 20px; background: radial-gradient(ellipse at 15% 0%, #244b3a 0, transparent 65%); }
+    main { width: 100%; max-width: 460px; }
+    .eyebrow { color: #a8c0b2; font-size: 12px; letter-spacing: .16em; font-weight: 700; }
+    .badge { width: 80px; height: 80px; display: grid; place-items: center; margin: 28px 0 20px; border-radius: 24px; background: #b9f36b; color: #172713; font-size: 24px; font-weight: 900; box-shadow: 0 12px 40px #0003; }
+    h1 { margin: 0; font-size: clamp(38px, 10vw, 52px); letter-spacing: -.05em; }
+    .subtitle { color: #b3c6bb; margin: 12px 0 28px; line-height: 1.6; }
+    .details { display: flex; gap: 24px; border-top: 1px solid #ffffff20; border-bottom: 1px solid #ffffff20; padding: 18px 0; margin-bottom: 28px; }
+    .details span { display: block; color: #95ac9e; font-size: 12px; margin-bottom: 5px; }
+    .details strong { font-size: 15px; font-weight: 600; }
+    .button { display: block; padding: 18px; background: #b9f36b; color: #172713; text-decoration: none; text-align: center; border-radius: 14px; font-size: 17px; font-weight: 750; transition: background .15s; }
+    .button:hover { background: #cbff8a; }
+    a:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+    .download { display: block; text-align: center; padding: 17px; color: #bdd5c6; font-size: 14px; }
+    .note { margin: 6px 0 28px; color: #a8c0b2; text-align: center; font-size: 13px; line-height: 1.6; }
+    details { border-top: 1px solid #ffffff20; padding: 18px 0; }
+    summary { cursor: pointer; font-weight: 600; font-size: 15px; }
+    ol { padding-left: 22px; color: #b3c6bb; font-size: 14px; line-height: 1.8; }
+    li + li { margin-top: 10px; }
+    .signing { color: #9eb4a7; font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; }
+    footer { margin-top: 22px; color: #829b8c; font-size: 12px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">NROHAN / iOS</div>
+    <div class="badge" aria-hidden="true">NRO</div>
+    <h1>NroHan</h1>
+    <p class="subtitle">Bản dành cho iPhone và iPad.<br>Mở trang này bằng Safari để cài đặt.</p>
+    <div class="details" aria-label="Thông tin phiên bản">
+      <div><span>Phiên bản</span><strong>0.0.3</strong></div>
+      <div><span>Dung lượng</span><strong>37,3 MB</strong></div>
+      <div><span>Thiết bị</span><strong>iOS 12+</strong></div>
+    </div>
+    <a class="button" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fanhhphuong06.github.io%2FNROHANV3%2Fmanifest.plist">Cài đặt trên iPhone / iPad</a>
+    <a class="download" href="https://github.com/AnhhPhuong06/NROHANV3/releases/download/v0.0.3-enterprise.1/NroHan-enterprise.ipa">Tải file IPA</a>
+    <p class="note">Không cần đăng nhập GitHub.<br>Sau khi xác nhận cài, về màn hình chính để xem tiến trình.</p>
+    <details>
+      <summary>Hướng dẫn khi cài lần đầu</summary>
+      <ol>
+        <li>Mở trang bằng <strong>Safari</strong>, nhấn <strong>Cài đặt</strong> rồi xác nhận.</li>
+        <li>Nếu iPhone báo nhà phát triển chưa được tin cậy, vào <strong>Cài đặt → Cài đặt chung → VPN &amp; Quản lý thiết bị</strong>.</li>
+        <li>Chọn nhà phát triển <strong>RAKUTEN SECURITIES,INC.</strong> và làm theo hướng dẫn tin cậy trên thiết bị. iOS 18 trở lên có thể yêu cầu khởi động lại.</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Thông tin bản ký</summary>
+      <p class="signing">Nhà phát triển trên chứng chỉ: RAKUTEN SECURITIES,INC.<br>Profile Enterprise hết hạn: 05/11/2026.<br>Việc cài đặt còn phụ thuộc trạng thái chứng chỉ và xác thực của Apple.</p>
+    </details>
+    <footer>Bản Enterprise dành cho phân phối nội bộ của tổ chức.</footer>
+  </main>
+</body>
+</html>

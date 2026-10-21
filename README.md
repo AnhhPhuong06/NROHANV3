@@ -2,6 +2,12 @@
 
 Project Xcode export từ Unity 2021.3.45f2, dành cho iPhone/iPad arm64.
 
+## Cài đặt trên iPhone / iPad
+
+Mở [trang cài NroHan](https://anhhphuong06.github.io/NROHANV3/) bằng Safari.
+Trang và manifest OTA ở `docs/`; IPA đã ký được lưu ở GitHub Releases.
+Profile của bản Enterprise 0.0.3 hiện tại hết hạn ngày **05/11/2026**.
+
 ## Build IPA unsigned trên Codemagic
 
 1. Mở app liên kết với repo `AnhhPhuong06/NROHANV3` trên Codemagic.
