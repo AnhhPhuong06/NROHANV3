@@ -4,28 +4,39 @@ Project Xcode export từ Unity 2021.3.45f2, dành cho iPhone/iPad arm64.
 
 ## Cài đặt trên iPhone / iPad
 
-Mở [trang cài NroHan](https://nroha.fun/) bằng Safari.
-Trang và manifest OTA ở `docs/`; IPA đã ký được lưu ở GitHub Releases.
+Trang cài trên VPS: **https://nroha.fun/ios/** (sau khi chép gói lên VPS).
+Bản GitHub Pages: https://anhhphuong06.github.io/NROHANV3/.
+Source trang ở `docs/`; IPA đã ký cũng được lưu ở GitHub Releases.
 Profile của bản Enterprise 0.0.3 hiện tại hết hạn ngày **05/11/2026**.
 
-### Tên miền nroha.fun
+### Đưa trang cài lên VPS
 
-GitHub Pages xuất bản từ nhánh `main`, thư mục `/docs`; tên miền được khai báo
-trong `docs/CNAME`. Nút cài dùng `https://nroha.fun/manifest.plist`, còn IPA
-tiếp tục được tải từ GitHub Releases.
+Gói chỉ cần web server phục vụ file tĩnh qua HTTPS, không cần Node.js hay PHP.
 
-Trong Cloudflare → **nroha.fun → DNS → Records**, cấu hình tên gốc:
+1. Tạo gói trên máy này:
 
-- **Type:** `CNAME`
-- **Name:** `@`
-- **Target:** `anhhphuong06.github.io` (không thêm `/NROHANV3`)
-- **Proxy status:** `DNS only` (mây xám)
-- **TTL:** `Auto`
+   ```bash
+   python ci/package_vps_site.py
+   ```
 
-Thay các bản ghi `A`/`AAAA` cũ có cùng tên gốc `@` bằng bản ghi trên; nếu đã có
-`CNAME` ở `@`, sửa bản ghi đó. Các bản ghi email và tên miền phụ được giữ nguyên.
-Cloudflare hỗ trợ CNAME ở tên gốc bằng CNAME flattening. Sau khi DNS trỏ đúng,
-GitHub có thể cấp HTTPS; kiểm tra **Settings → Pages → Enforce HTTPS**.
+2. Chép `VPS/NroHan-VPS.zip` vào thư mục gốc của website **nroha.fun** trên VPS
+   và giải nén tại đó. Gói tạo thư mục `ios/` chứa trang, icon, manifest và IPA.
+   Giữ nguyên các file website đang có ở thư mục gốc.
+3. Mở **https://nroha.fun/ios/** bằng Safari trên iPhone hoặc iPad.
+
+DNS của `nroha.fun` tiếp tục trỏ tới VPS. Nếu đã đổi bản ghi tên gốc sang GitHub,
+khôi phục bản ghi trỏ về IP VPS của bạn. Giữ nguyên các bản ghi email.
+
+URL gói mặc định là `https://nroha.fun/ios/`. Nếu dùng thư mục hoặc tên miền
+khác, tạo lại gói với URL đầy đủ (có dấu `/` cuối):
+
+```bash
+python ci/package_vps_site.py --base-url https://nroha.fun/tai-game/
+```
+
+Script cập nhật đồng bộ URL trang, ảnh chia sẻ, nút cài OTA và link IPA trong
+manifest. Không sửa file `.plist` bằng link tương đối. Chứng chỉ và mật khẩu
+không được đưa vào gói. Xem `VPS/HUONG-DAN.txt` sau khi tạo gói.
 
 ## Build IPA unsigned trên Codemagic
 
